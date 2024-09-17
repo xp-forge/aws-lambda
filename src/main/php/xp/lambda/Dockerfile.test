@@ -18,4 +18,8 @@ curl -s "http://localhost:8080/2015-03-31/functions/function/invocations" -d "$2
 kill -2 $pid\n\
 echo' > /lambda-entrypoint.sh
 
+COPY --from=runtime /usr/lib64/libonig.so.2 /opt/bin
+
+ENV LD_LIBRARY_PATH=/opt/bin/
+
 ENV TZ UTC

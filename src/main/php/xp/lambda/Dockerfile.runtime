@@ -11,6 +11,7 @@ RUN yum clean all && yum install -y \
   re2c \
   openssl-devel \
   libxml2-devel \
+  oniguruma-devel \
   tar \
   gzip \
   zip \
@@ -24,6 +25,7 @@ RUN cd php-src-php-${php_version} && ./buildconf --force && ./configure \
   --without-sqlite3 \
   --with-zlib \
   --with-openssl \
+  --enable-mbstring \
   --enable-bcmath \
   --disable-pdo && \
   make -j $(nproc) all install
